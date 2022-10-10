@@ -13,7 +13,7 @@
 
     <?php
 
-    $agenda = array( array($_GET['nombre']) , array($_GET['tlf']) );
+    $agenda = array( $_GET['nombre'] ?? null , $_GET['tlf'] ?? null );
 
     array_push($agenda[0] , $_GET['nombre']);
     

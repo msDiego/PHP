@@ -15,8 +15,6 @@
 
     $agenda = array( $_GET['nombre'] ?? null , $_GET['tlf'] ?? null );
 
-    
-    
     if (($_GET['nombre'] != NULL) && ($_GET['tlf'] != NULL)){
         agenda($agenda);
     }

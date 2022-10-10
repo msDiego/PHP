@@ -17,8 +17,10 @@
 
     array_push($agenda[0] , $_GET['nombre']);
     
-
-    agenda($agenda);
+    if (($_GET['nombre'] != NULL) && ($_GET['tlf'] != NULL)){
+        agenda($agenda);
+    }
+    
 
     function agenda($agenda){
 

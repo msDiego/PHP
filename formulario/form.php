@@ -21,17 +21,12 @@
         agenda($agenda);
     }
     
-
     function agenda($agenda){
 
         $output = "";
 
-        for ($i = 0; $i <= count($agenda[0]); $i++){
-            var_dump($agenda[0]);
-            var_dump($i);
-            $output .= '<p>Nombre: ' . $agenda[0][$i] . ' | Teléfono: ' . $agenda[1][$i] . '</p>';
-        }
-        
+        $output .= '<p> Nombre: ' . $agenda[0] . ' | Teléfono: ' . $agenda[1] . '</p>';
+
         echo $output;
 
     }

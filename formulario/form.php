@@ -4,8 +4,9 @@
     <body>
 
     <style>
-        .error{
+        #error{
             color: red;
+            font-size: xx-large;
         }
 
         div{

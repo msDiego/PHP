@@ -10,16 +10,38 @@
 
 <body>
 
+    <style>
+
+        table{
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        td, th {
+            border: solid 2px;
+            margin: auto;
+            padding: 8px;
+            background-color: #FFFBDE;
+        }
+
+        h2{
+            text-align: center;
+        }
+        
+    </style>
+
     <h2>Tabla de multiplicar creada con PHP </h2>
 
-    <style> <?php include 'style.css'; ?> </style>
+    <style>
+        <?php include 'style.css'; ?>
+    </style>
     <?php
 
     define('multiplicador', 10);
     define('multiplicando', 10);
 
 
-    $output = '<table border="2" align="center"><thread><tr><th>*</th>';
+    $output = '<table><thread><tr><th>*</th>';
     for ($i = 0; $i <= multiplicador; $i++) {
         $output .= "<th>$i</th>";
     }

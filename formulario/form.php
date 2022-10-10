@@ -1,37 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
-<body>
-
-    <form>
-        <label for="fname">Nombre:</label><br>
-        <input type="text" id="nombre" name="nombre"><br>
-        <label for="lname">Teléfono:</label><br>
-        <input type="number" id="tlf" name="tlf"><br><br>
-        <input type="submit" value="Enviar">
-    </form>
-
-    <?php
-
-    $agenda = array( $_GET['nombre'] ?? null , $_GET['tlf'] ?? null );
-
-    if (($_GET['nombre'] != NULL) && ($_GET['tlf'] != NULL)){
-        agenda($agenda);
-    }
     
-    function agenda($agenda){
+    <body>
 
-        $output = "";
+    <style>
+        .error{
+            color: red;
+        }
 
-        $output .= '<p> Nombre: ' . $agenda[0] . ' | Teléfono: ' . $agenda[1] . '</p>';
+        div{
+            align-items: left;
+        }
 
-        echo $output;
+    </style>
+        <?php
+        if (isset($_GET['agenda']))
+            $agenda = $_GET['agenda'];
+        else
+            $agenda = array(); // Creamos $agenda como un array vacío  
+        
+        
+        if (isset($_GET['submit']))
+        {
+            $nuevo_nombre = filter_input(INPUT_GET,'nombre');
+            $nuevo_telefono = filter_input(INPUT_GET,'telefono');
+            if (empty($nuevo_nombre))
+            {
+                echo "<p id=\"error\"'>Debe introducir un nombre!!</p><br />";
+            }
+            elseif (empty($nuevo_telefono))
+            {
+                unset($agenda[$nuevo_nombre]);
+            }
+            else
+            {
+                $agenda[$nuevo_nombre] = $nuevo_telefono;
+            }
+        }
+        ?>
 
-    }
+        <!-- Creamos el formulario de introducción de un nuevo contacto -->
+        <h2>Nuevo contacto</h2>
 
+        <form>
+            <!-- Metemos los contactos ya existentes ocultos en el formulario -->
+            <div>
+                <?php
+                foreach ($agenda as $nom => $telf) {
+                    echo '<input type="hidden" name="agenda[' . $nom . ']" ';
+                    echo 'value="' . $telf . '"/>';
+                }
+                ?>
+                <label>Nombre:<input type="text" name="nombre"/></label><br><br>
+                <label>Teléfono:<input type="number" name="telefono"/></label><br><br>
+                <input type="submit" name='submit' value="Ejecutar"/><br>
+            </div>
+        </form>
+        <br>
 
-    ?>
-
-</body>
-
+        <!-- Mostramos los contactos de la agenda -->
+        <h2>Agenda</h2>
+        <?php
+        if (count($agenda) == 0)
+        {
+            echo "<p>No hay contactos en la agenda.</p>";
+        }
+        else
+        {
+            echo "<ul>";
+            foreach ($agenda as $nom => $telf) {
+                echo "<li>" . $nom . ': ' . $telf . "</li>";
+            }
+            echo "</ul>";
+        }
+        ?>        
+    </body>
 </html>

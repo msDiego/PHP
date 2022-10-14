@@ -1,5 +1,14 @@
 <body>
 
+
+    <style>
+
+        #error{
+            color: #740808;
+        }
+
+    </style>
+
     <form>
         <label for="number">Número:</label>
         <label for="numero"></label>
@@ -20,7 +29,7 @@
         echo '<p> Solo admite números enteros positivos mayores que 0 </p>';
     }
     else{
-        echo '<p style="color: red"> Has introducido un número incorrecto! </p>';
+        echo '<p id="error"> Has introducido un número incorrecto! </p>';
     }
 
     function calcular($number): void {

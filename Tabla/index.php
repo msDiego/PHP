@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="EN">
 
 <head>
     <meta charset="UTF-8">
     <title>Tabla de multiplicar</title>
-    <link Shref="style.css">
+
 </head>
 
 <body>
@@ -22,6 +22,7 @@
             margin: auto;
             padding: 8px;
             background-color: #FFFBDE;
+            align-content: center;
         }
 
         h2{
@@ -51,7 +52,7 @@
     for ($j = 0; $j <= multiplicando; $j++) {
         $output .= "<tr><th>$j</th>";
         for ($z = 0; $z <= multiplicador; $z++) {
-            $output .= '<td align="center">' . $j * $z . '</td>';
+            $output .= '<td>' . $j * $z . '</td>';
         }
 
         $output .= "</tr>";

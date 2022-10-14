@@ -9,15 +9,17 @@
 
     <?php
 
-use function PHPSTORM_META\type;
-
     $number = $_GET['numero'];
 
     if(($number > 0)){
         calcular($number);
     }
+
+    elseif ($number == null){
+        echo '<p> Solo admite números enteros positivos mayores que 0 </p>';
+    }
     else{
-        echo '<p> Solo admite números enteros positivos mayores que 0';
+        echo '<p style="color: red"> Has introducido un número incorrecto! </p>';
     }
 
     function calcular($number){

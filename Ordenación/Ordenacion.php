@@ -11,14 +11,17 @@
 
     echo '<h3>'.$arreglo.'</h3>';
 
-    burbuja($numeros);
+    burbuja($numeros); // METODO BURBUJAETODO BURBUJA
 
     echo '<p> Usando método quicksort: </p>';
 
     $output = "";
-     foreach (quickSort($numeros) as $valor){
-        $output .= " " . $valor;
-    }
+
+    $result = array(quickSort($numeros));
+
+     foreach ( $result as $value){
+         $output .= " " . $value;
+     }
 
     function burbuja ($numeros): void {
 
@@ -42,37 +45,27 @@
 
     function quickSort ($numeros){
 
-        if (count($numeros) <= 1) {
+        if (count($numeros) < 2) {
             return $numeros;
-        } else {
-
-            $pivot = count($numeros) - 1;
-            $i = 0;
-            $j = $pivot - 1;
-            $left = array();
-            $right = array();
-
-            for (; $i < $j; $i++) {
-                for (; $j > $i; $j--) {
-
-                    if ($numeros[$i] < $pivot) {
-                        $left[] = $numeros[$i];
-                    } else {
-                        $right[] = $numeros[$i];
-                    }
-
-                    if ($numeros[$j] < $pivot) {
-                        $left[] = $numeros[$j];
-                    } else {
-                        $right[] = $numeros[$j];
-                    }
-
-                }
-
-            }
-            var_dump($left, array($pivot), $right);
         }
-    }
+        $left = array();
+        $right = array();
+
+        reset($numeros);
+        $pivote_key = key($numeros);
+        $pivote = array_shift($numeros);
+
+        foreach ($numeros as $k => $v){
+            if ($v < $pivote){
+                $left[$k] = $v;
+            }
+            else{
+                $right[$k] = $v;
+            }
+        }
+        return array_merge(quickSort($left), array($pivote_key => $pivote), quickSort($right));
+     }
+
 
 
 
